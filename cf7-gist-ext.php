@@ -12,11 +12,11 @@ Version: 1.0.0
 // Prohibit direct script loading.
 defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 
-define( 'cf7_gist_VERSION', '1.0.0' );
-define( 'cf7_gist_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-define( 'cf7_gist_PLUGIN_NAME', trim( dirname( cf7_gist_PLUGIN_BASENAME ), '/' ) );
-define( 'cf7_gist_PLUGIN_DIR', untrailingslashit( dirname( __FILE__ ) ) );
-define( 'cf7_gist_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
+define( 'CF7_GIST_VERSION', '1.0.0' );
+define( 'CF7_GIST_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'CF7_GIST_PLUGIN_NAME', trim( dirname( CF7_GIST_PLUGIN_BASENAME ), '/' ) );
+define( 'CF7_GIST_PLUGIN_DIR', untrailingslashit( dirname( __FILE__ ) ) );
+define( 'CF7_GIST_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
 
-require_once( cf7_gist_PLUGIN_DIR . '/classes/cf7_gist_loader.php' );
+require_once( CF7_GIST_PLUGIN_DIR . '/classes/cf7_gist_loader.php' );
 

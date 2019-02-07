@@ -46,7 +46,7 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 
 		function add_gist_tracking_script() {
 
-			wp_enqueue_script( 'cf7-gist-scripts', cf7_gist_PLUGIN_URL . '/assets/js/frontend.js', array( 'jquery' ), cf7_gist_VERSION, true );
+			wp_enqueue_script( 'cf7-gist-scripts', CF7_GIST_PLUGIN_URL . '/assets/js/frontend.js', array( 'jquery' ), CF7_GIST_VERSION, true );
 		}
 
 		public static function render_options_metabox( $panels ) {
