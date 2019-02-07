@@ -42,11 +42,37 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_gist_tracking_script' ) );
 			add_filter( 'wpcf7_editor_panels', __CLASS__ . '::render_options_metabox' );
 			add_action( 'wpcf7_after_save', array( $this, 'save_gist_settings' ) );
+			add_action( 'wpcf7_form_hidden_fields', array( $this, 'add_field' ) );
+		}
+
+		function add_field( $fields ) {
+
+			$fields['cf7-gist'] = 'enabled';
+			return $fields;
 		}
 
 		function add_gist_tracking_script() {
 
+			$args = array('post_type' => 'wpcf7_contact_form', 'posts_per_page' => -1);
+			$cf7Forms = get_posts( $args );
+			$form_data = array();
+
+			foreach ( $cf7Forms as $form ) {
+				
+				$id = $form->ID;
+
+				$cf7_gist = get_option( 'cf7_gist_'.$id, array() );
+
+				$is_gist_enabled = $cf7_gist['enabled'];
+
+				$form_data[$id] = $is_gist_enabled;
+			}
+
 			wp_enqueue_script( 'cf7-gist-scripts', CF7_GIST_PLUGIN_URL . '/assets/js/frontend.js', array( 'jquery' ), CF7_GIST_VERSION, true );
+
+			wp_localize_script( 'cf7-gist-scripts', 'cf7_gist_vars', array(
+				'form_data' => $form_data
+			) );
 		}
 
 		public static function render_options_metabox( $panels ) {

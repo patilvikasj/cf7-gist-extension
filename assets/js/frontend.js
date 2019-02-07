@@ -2,7 +2,10 @@ jQuery( function( $ ) {
 	
 	document.addEventListener( 'wpcf7submit', function( event ) {
 
-	    if ( '128' == event.detail.contactFormId ) {
+		var form_data = cf7_gist_vars.form_data;
+		var form_id   = event.detail.contactFormId;
+
+	    if ( 'undefined' !== typeof form_data[form_id] && '1' == form_data[form_id] ) {
 
 	    	if( 'undefined' !== typeof event.detail ) {
 
