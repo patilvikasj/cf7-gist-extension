@@ -183,7 +183,7 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 		 */
 		function save_gist_settings( $args ) {
 
-			if ( ! empty( $_POST ) ) {
+			if ( ! empty( $_POST ) && isset( $_POST['cf7-gist'] ) ) {
 
 				update_option( 'cf7_gist_' . $args->id(), $_POST['cf7-gist'] );
 			}
