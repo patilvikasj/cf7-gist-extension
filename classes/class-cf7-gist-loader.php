@@ -156,7 +156,7 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 		function gist_settings( $args ) {
 
 			$cf7_gist_defaults = array();
-			$cf7_gist          = get_option( 'cf7_gist_' . $args->id(), $cf7_gist_defaults );
+			$cf7_gist          = (int) get_option( 'cf7_gist_' . $args->id(), $cf7_gist_defaults );
 
 			?>
 
