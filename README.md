@@ -1,11 +1,4 @@
-# Contact Form 7 GIST Extension 
-
-Contributors: patilvikasj 
-Tags: autoresponders, GIST 
-Requires at least: 4.7 
-Tested up to: 5.1 Stable
-tag: 1.0.0 License: 
-GPLv3 License URI: https://www.gnu.org/licenses/gpl-3.0.html
+# Contact Form 7 GIST Extension
 
 Contact Form 7 GIST Extension allows you to automatically sync Contact
 Form 7 data to GIST contacts/users.
