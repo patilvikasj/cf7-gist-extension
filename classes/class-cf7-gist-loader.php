@@ -78,7 +78,6 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 
 			define( 'CF7_GIST_VERSION', '1.0.0' );
 			define( 'CF7_GIST_PLUGIN_NAME', trim( dirname( CF7_GIST_PLUGIN_BASENAME ), '/' ) );
-			define( 'CF7_GIST_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
 		}
 
 		/**
@@ -107,11 +106,11 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 
 					$id = $form->ID;
 
-					$cf7_gist = get_option( 'cf7_gist_' . $id, array() );
+					$is_gist_enabled = get_option( 'cf7_gist_' . $id, false );
 
-					$is_gist_enabled = isset( $cf7_gist['enabled'] ) ? $cf7_gist['enabled'] : false;
-
-					$form_data[ $id ] = $is_gist_enabled;
+					if( $is_gist_enabled ) {
+						$form_data[ $id ] = $is_gist_enabled;
+					}
 				}
 			}
 
@@ -163,11 +162,10 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 
 			<div class="cf7_gist_fields">
 				<p class="enable_gist_sync">
-					<input type="checkbox" id="cf7-gist-enabled" name="cf7-gist[enabled]" value="1"<?php echo ( isset( $cf7_gist['enabled'] ) ) ? ' checked="checked"' : ''; ?> />
-
-						<label for="cf7-gist-enabled">
-						<?php echo esc_html( __( 'Sync form data to GIST.', 'contact-form-7-gist' ) ); ?>
-						</label>
+					<input type="checkbox" id="cf7-gist-enabled" name="cf7-gist[enabled]" value="1"<?php echo ( isset( $cf7_gist ) && '1' == $cf7_gist ) ? ' checked="checked"' : ''; ?> />
+					<label for="cf7-gist-enabled">
+					<?php echo esc_html( __( 'Sync form data to GIST.', 'contact-form-7-gist' ) ); ?>
+					</label>
 				</p>
 			</div>
 
@@ -184,8 +182,9 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 		function save_gist_settings( $args ) {
 
 			if ( ! empty( $_POST ) && isset( $_POST['cf7-gist'] ) ) {
-
-				update_option( 'cf7_gist_' . $args->id(), $_POST['cf7-gist'] );
+				update_option( 'cf7_gist_' . $args->id(), (int) $_POST['cf7-gist']['enabled'] );
+			} else {
+				delete_option( 'cf7_gist_' . $args->id() );
 			}
 		}
 	}
