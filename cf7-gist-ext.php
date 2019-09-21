@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Contact Form 7 Gist (Formerly ConvertFox) Extension
+ * Plugin Name: Gist (Formerly ConvertFox) Extension for Contact Form 7
  * Description: Integrate Contact Form 7 with Gist.
  * Author: patilvikasj
  * Author URI: https://patilvikasj.wordpress.com/
  * Text Domain: contact-form-7-gist
  * Domain Path: /languages/
- * Version: 1.0.0
+ * Version: 1.0.1
  *
  * @package cf7-gist
  */

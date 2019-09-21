@@ -49,6 +49,7 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_gist_tracking_script' ) );
 			add_filter( 'wpcf7_editor_panels', __CLASS__ . '::render_options_metabox' );
 			add_action( 'wpcf7_after_save', array( $this, 'save_gist_settings' ) );
+			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		}
 
 		/**
@@ -76,7 +77,7 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 		 */
 		function define_constants() {
 
-			define( 'CF7_GIST_VERSION', '1.0.0' );
+			define( 'CF7_GIST_VERSION', '1.0.1' );
 			define( 'CF7_GIST_PLUGIN_NAME', trim( dirname( CF7_GIST_PLUGIN_BASENAME ), '/' ) );
 		}
 
@@ -108,7 +109,7 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 
 					$is_gist_enabled = get_option( 'cf7_gist_' . $id, false );
 
-					if( $is_gist_enabled ) {
+					if ( $is_gist_enabled ) {
 						$form_data[ $id ] = $is_gist_enabled;
 					}
 				}
@@ -162,7 +163,7 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 
 			<div class="cf7_gist_fields">
 				<p class="enable_gist_sync">
-					<input type="checkbox" id="cf7-gist-enabled" name="cf7-gist[enabled]" value="1"<?php echo ( isset( $cf7_gist ) && '1' == $cf7_gist ) ? ' checked="checked"' : ''; ?> />
+					<input type="checkbox" id="cf7-gist-enabled" name="cf7-gist[enabled]" value="1"<?php echo ( isset( $cf7_gist ) && 1 === $cf7_gist ) ? ' checked="checked"' : ''; ?> />
 					<label for="cf7-gist-enabled">
 					<?php echo esc_html( __( 'Sync form data to GIST.', 'contact-form-7-gist' ) ); ?>
 					</label>
@@ -186,6 +187,15 @@ if ( ! class_exists( 'Cf7_Gist_Loader' ) ) {
 			} else {
 				delete_option( 'cf7_gist_' . $args->id() );
 			}
+		}
+
+		/**
+		 * Load plugin textdomain.
+		 *
+		 * @since 1.0.1
+		 */
+		function load_textdomain() {
+			load_plugin_textdomain( 'contact-form-7-gist', false, CF7_GIST_PLUGIN_DIR . '/languages' );
 		}
 	}
 

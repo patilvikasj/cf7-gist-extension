@@ -2,8 +2,8 @@
 Contributors: patilvikasj
 Tags: autoresponders, GIST
 Requires at least: 4.7
-Tested up to: 5.1
-Stable tag: 1.0.0
+Tested up to: 5.2
+Stable tag: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,6 +42,9 @@ This is very easy. You just need to go to your Contact Form 7 Edit screen.
 Go to GIST tab Where you will see Sync form data to GIST option. You just need to check the option to sync your data to GIST contacts. 
 
 == Changelog ==
+
+= 1.0.1 - 2019-09-21 =
+- Improvement: Added language file for translation.
 
 = 1.0.0 - 2019-02-17 =
 - Initial release
