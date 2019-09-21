@@ -1,6 +1,6 @@
 {
   "name": "Cf7-gist-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Integrate Contact Form 7 with Gist.",
   "main": "Gruntfile.js",
   "scripts": {
@@ -13,16 +13,16 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
-    "grunt-rtlcss": "^2.0.1",
+    "autoprefixer": "^9.4.7",
+    "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-wp-i18n": "^1.0.2",
-    "shelljs": "~0.8.3",
-    "autoprefixer": "^9.4.7",
     "grunt-postcss": "^0.9.0",
-    "postcss-flexibility": "^2.0.0"
+    "grunt-rtlcss": "^2.0.1",
+    "grunt-wp-i18n": "^1.0.2",
+    "postcss-flexibility": "^2.0.0",
+    "shelljs": "~0.8.3"
   },
   "repository": {
     "type": "git",
